@@ -23,7 +23,7 @@ Vagrant.configure("2") do |config|
             hyperv.memory = 512
         end
 
-        fw.trigger.after :reload do |trigger|
+        fw.trigger.before :reload do |trigger|
             trigger.info = "Setting Hyper-V switch to 'NATSwitch' to allow for static IP..."
         
             trigger.run = 
