@@ -15,7 +15,7 @@ Vagrant.configure("2") do |config|
     config.vm.define "fw"  do |fw|
         fw.vm.box = "generic/debian12"
         fw.vm.hostname = "fw"
-        fw.vm.network "internal_network", bridge: "NATSwitch"
+        fw.vm.network "public_network", bridge: "Default Switch"
         fw.vm.synced_folder ".", "/vagrant", disabled: true
         fw.vm.provider "hyperv" do |hyperv|
             hyperv.vmname = "fw"

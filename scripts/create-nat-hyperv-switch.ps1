@@ -7,7 +7,7 @@ If ("NATSwitch" -in (Get-VMSwitch | Select-Object -ExpandProperty Name) -eq $FAL
 
     New-NetIPAddress -IPAddress 10.10.10.1 -PrefixLength 30 -InterfaceAlias "vEthernet (NATSwitch)"
 
-    New-NetNAT -Name "NATNetwork" -InternalIPInterfaceAddressPrefix 10.10.10.0/24
+    New-NetNAT -Name "NATNetwork" -InternalIPInterfaceAddressPrefix 10.10.10.0/30
 }
 else {
     '"NATSwitch" for static IP configuration already exists; skipping'
@@ -22,11 +22,11 @@ else {
     '"10.10.10.1" for static IP configuration already registered; skipping'
 }
 
-If ("10.10.10.0/24" -in (Get-NetNAT | Select-Object -ExpandProperty InternalIPInterfaceAddressPrefix) -eq $FALSE) {
-    'Registering new NAT adapter for 10.10.10.0/24 on Windows Hyper-V host...'
+If ("10.10.10.0/30" -in (Get-NetNAT | Select-Object -ExpandProperty InternalIPInterfaceAddressPrefix) -eq $FALSE) {
+    'Registering new NAT adapter for 10.10.10.0/30 on Windows Hyper-V host...'
 
-    New-NetNAT -Name "NATNetwork" -InternalIPInterfaceAddressPrefix 10.10.10.0/24
+    New-NetNAT -Name "NATNetwork" -InternalIPInterfaceAddressPrefix 10.10.10.0/30
 }
 else {
-    '"10.10.10.0/24" for static IP configuration already registered; skipping'
+    '"10.10.10.0/30" for static IP configuration already registered; skipping'
 }
