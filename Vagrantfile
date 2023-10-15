@@ -1,7 +1,7 @@
 Vagrant.configure("2") do |config|
 
     config.trigger.before :up do |trigger|
-        trigger.info = "Creating 'WANSwitch' and 'LANSwitch' Hyper-V switch if it does not exist..."
+        trigger.info = "Creating 'NATSwitch' Hyper-V switch if it does not exist..."
         trigger.run = 
             { privileged: "true", 
               powershell_elevated_interactive: "true", 
