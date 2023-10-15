@@ -33,9 +33,9 @@ Vagrant.configure("2") do |config|
                   path: "./scripts/configure-fw-vm-nics.ps1" }
         end
 
-        fw.vm.provision "shell", path "./scripts/configure-fw-guest-ips.sh"
+        fw.vm.provision "shell", path: "./scripts/configure-fw-guest-ips.sh"
         fw.vm.provision :reload
-        
+
     end
 
     # config.vm.define "dev" do |dev|
