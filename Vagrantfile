@@ -23,6 +23,19 @@ Vagrant.configure("2") do |config|
             hyperv.maxmemory = 1024
             hyperv.memory = 512
         end
+
+        fw.trigger.before :reload do |trigger|
+            trigger.info = "Setting Hyper-V switch to 'NATSwitch' to allow for static IP..."
+        
+            trigger.run = 
+                { privileged: "true", 
+                  powershell_elevated_interactive: "true", 
+                  path: "./scripts/configure-fw-vm-nics.ps1" }
+        end
+
+        fw.vm.provision "shell", path "./scripts/configure-fw-guest-ips.sh"
+        fw.vm.provision :reload
+        
     end
 
     # config.vm.define "dev" do |dev|

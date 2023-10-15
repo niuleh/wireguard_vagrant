@@ -1,0 +1,1 @@
+Get-VM "fw" | Get-VMNetworkAdapter | Connect-VMNetworkAdapter -SwitchName "NATSwitch"
